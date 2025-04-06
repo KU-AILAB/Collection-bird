@@ -1,39 +1,24 @@
+import styles from "./page.module.css";
 import React from "react";
-import "./main.css";
-import { Link, useNavigate } from "react-router-dom";
+import Footer from "../../layout/Footer/footer";
+import Main from "./main";
+import { GoMoveToTop } from "react-icons/go";
 
 const MainPage = () => {
-    const navigate = useNavigate();
 
-    const navigateToUpload = () => {
-        navigate("/upload")
-    }
     return (
-      <div className="background">
-        <div className="header">
-            <div className="header_L">
-                <Link
-                    to="/"
-                >
-                    네이처링_클론
-                </Link>
-            </div>
-            <div className="header_R">
-                <div className="header_R_Top"></div>
-                <div className="header_R_Bottom">
-                    <button onClick={navigateToUpload}>
-                        관찰 올리기
-                    </button>
-                </div>
-            </div>
-        </div>
+        <div className={styles.container}>
+          <div className={styles.mainContainer}>
+            <Main/>
+            <Footer/>
+          </div>
 
-        <div className="Main">
-            <div className="search">search</div>
-            <div className="post">post</div>
+          <a href="#top" className={styles.topButton}>
+            <GoMoveToTop fontSize={16} fontWeight={900}/>
+          </a>
+
         </div>
-      </div>
-    );
+      )
 };
   
 export default MainPage;

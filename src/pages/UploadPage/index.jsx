@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./upload.css";
+import "./../../style/upload.css"
 import { Link, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -112,20 +112,6 @@ const UploadPage = () => {
    
     return(
         <div className="background">
-            <div className="header">
-                <div className="header_L">
-                    <Link to="/">네이처링_클론</Link>
-                </div>
-                <div className="header_R">
-                    <div className="header_R_Top"></div>
-                    <div className="header_R_Bottom">
-                        <button onClick={() => navigate('/upload')}>
-                            관찰 올리기
-                        </button>
-                    </div>
-                </div>
-            </div>
-
             <div className="uploadInfo">
                 <div className="name">
                     <div className="uploadInfo_title">생물 이름</div>

@@ -1,23 +1,26 @@
-//import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./../../style/Header.css"
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const navigateToUpload = () => {
+    navigate("/upload");
+  };
+
   return (
-    <div className="relative z-10 text-black bg-white w-screen border-b">
-      <div className="w-full">
-        <div className="flex items-center justify-between mx-5 sm:mx-10 lg:mx-20">
-          {/* Logo */}
-          <div className="flex items-center text-xl text-[rgb(80,81,255)] font-bold h-14">
-            <Link
-              to="/"
-              className="text-inherit no-underline visited:text-inherit"
-            >
-              네이처링
-            </Link>
-          </div>
+    <div className="header">
+            <div className="header_L">
+                <Link to="/">네이처링_클론</Link>
+            </div>
+            <div className="header_R">
+                <div className="header_R_Top"></div>
+                <div className="header_R_Bottom">
+                    <button onClick={navigateToUpload}>관찰 올리기</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
   );
 };
 

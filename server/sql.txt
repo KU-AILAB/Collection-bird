@@ -1,0 +1,16 @@
+CREATE DATABASE collection_db CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE collection_db;
+
+CREATE TABLE observations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    species_category ENUM('조류', '포유류', '어류') NOT NULL,
+    species_name VARCHAR(100) NOT NULL,
+    habitat_type ENUM('숲', '강가', '습지', '도시') NOT NULL,
+    observation_date DATETIME,
+    location VARCHAR(100),
+    memo TEXT,
+    image_url VARCHAR(255),
+    video_url VARCHAR(255),
+    audio_url VARCHAR(255),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

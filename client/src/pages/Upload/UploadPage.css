@@ -1,0 +1,331 @@
+/* 전체 배경 및 업로드 컨테이너 */
+/* 배경색과 그림자, 여백 조정을 통해 모던한 카드 디자인 적용 */
+.background {
+  min-height: 100vh;
+  background-color: #f9f9f9; /* 밝은 배경색 */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 0;
+}
+
+.uploadInfo {
+  width: 720px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 강조 */
+  padding: 30px;
+  margin: 20px;
+}
+
+/* 섹션 제목 디자인 */
+/* 글자 크기와 굵기를 조정하여 가독성을 높임 */
+.uploadInfo_title {
+  font-size: 15px; /* 약간 축소 */
+  font-weight: 600; /* 중간 굵기 */
+  margin-bottom: 6px;
+  color: #333;
+}
+
+/* 생물 이름 및 서식지 선택 영역 */
+/* 클릭 가능한 영역을 카드 형태로 디자인 */
+.name {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.name_child {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  text-align: center;
+  color: #666;
+  cursor: pointer;
+  background-color: #fafafa;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.name_child:hover {
+  background-color: #f0f0f0;
+  border-color: #aaa;
+}
+
+/* 모달 스타일 */
+/* 중앙 정렬, 반투명 배경, 깔끔한 모달 콘텐츠 영역 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+}
+
+.modalButton {
+  padding: 8px 12px;
+  margin: 4px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.modalButton:hover {
+  background-color: #0056b3;
+}
+
+.modal_back_button {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+/* 미디어 타입 버튼 */
+/* 선택된 상태 강조 및 간격 조정 */
+.media_type_buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 0px;
+  justify-content: center;
+}
+
+.media_type_button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e2e3e5;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 60px;
+  text-align: center;
+}
+
+.media_type_button:hover {
+  background-color: #d2d3d5;
+}
+
+.media_type_button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* 드래그 앤 드롭 영역 */
+/* 깔끔한 테두리와 중앙 정렬 텍스트 */
+.dropZone {
+  display: block;
+  left: 200px;
+  width: 300px;
+  height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 10px;
+  text-align: center;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.dropZone:hover {
+  background-color: #f0f0f0;
+  border-color: #aaa;
+}
+
+.dropZoneContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #666;
+  font-size: 14px;
+}
+
+/* 미리보기 영역 */
+/* 이미지와 파일명을 보기 좋게 배열 */
+
+
+
+.previewImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.previewMediaContainer,
+.previewFilesContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: transparent; /* 부모와 동일 */
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.previewFile {
+  color: #444;
+  background-color: transparent; /* 테두리, 배경 제거 */
+  border: none;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* 데이터 섹션 */
+/* 미디어 업로드 영역 여백 조정 */
+.data {
+  margin-bottom: 24px;
+}
+
+.data_upload {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.data_image,
+.data_sound {
+  flex: 1;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px;
+  background-color: #fafafa;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.data_image:hover,
+.data_sound:hover {
+  background-color: #f0f0f0;
+  border-color: #aaa;
+}
+
+/* 관찰 시각 및 위치 섹션 */
+/* DatePicker, 입력창 디자인 개선 */
+.data_observation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.data_time,
+.data_location {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.datapicker_input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+
+.data_location input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.location_private {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* 관찰 메모 영역 */
+/* 텍스트 영역 크기 및 여백 조정 */
+.memo {
+  margin-bottom: 24px;
+}
+
+.memo textarea {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+  font-size: 14px;
+  color: #333;
+}
+
+/* 버튼 영역 */
+/* 각 버튼에 일관된 패딩과 전환 효과 적용 */
+.uploadButton {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.btn-primary {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-cancel {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ccc;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #999;
+}
+
+.btn-add {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}

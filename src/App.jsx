@@ -13,8 +13,8 @@ import 'leaflet/dist/leaflet.css';
 function Layout({ children }) {
   return (
     <div className="layout">
-      <Header />
-      <main style={{ paddingTop: "11vh" }}>{children}</main> {/* 헤더 높이만큼 여백 줌 */}
+      {/* <Header /> */}
+      <main style={{}}>{children}</main>
     </div>
   );
 }

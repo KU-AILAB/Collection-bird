@@ -27,9 +27,12 @@ const Header = () => {
               <div className={styles.navContainer}>
                 <Link to="/" className={styles.logo}>NatureLog</Link>
               </div>
-              <button className={styles.uploadButton}>
+              {/* <button className={styles.uploadButton}>
                 <IoIosCamera fontSize={24} /> Upload Observation
-              </button>
+              </button> */}
+              <Link to="/upload" className={styles.uploadButton}>
+                <IoIosCamera fontSize={24} /> Upload Observation
+              </Link>
             </div>
           </nav>
     </>

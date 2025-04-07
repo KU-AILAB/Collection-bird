@@ -83,7 +83,7 @@ const UploadPage = () => {
     };
 
     const navigateToPost = () => {
-        navigate("/post")
+        navigate("/details")
     }
 
     const UploadBox = () => {

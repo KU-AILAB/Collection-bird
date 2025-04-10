@@ -1,30 +1,32 @@
 import React from 'react'
 import styles from "./page.module.css";
-import { ImMenu } from 'react-icons/im';
-import { CgMenuGridR } from 'react-icons/cg';
-import { IoLocationSharp, IoSearch } from 'react-icons/io5';
+import { IoSearch } from 'react-icons/io5';
 import SocialCard from './card';
+import Button from './Button';
+import { CiEdit } from 'react-icons/ci';
 
 const Main = () => {
   return (
     <div className={styles.mineContainer}>
               {/* Search Section */}
               <section id="top" className={styles.searchSection}>
-                <div className={styles.searchContainer}>
-                  <div className={styles.searchBar}>
-                    <span className={styles.categorySelector}>All Categories</span>
+                <div className="flex justify-between px-[20px]">
+                  <div className="buttons flex gap-5">
+                    <div className="all flex gap-3">
+                      <Button/>
+                      <Button/>
+                      <Button/>
+                      <Button/>
+                      <Button/>
+                    </div>
                     <div className={styles.searchBar1}>
-                      <input type="text" placeholder="Search by species name or location..." className={styles.searchInput}/>
-                      <span style={{padding:'8px 14px 6px 6px'}}><IoSearch fontSize={18} /></span>
+                      <span style={{padding:'8px 6px 6px 14px'}}><IoSearch fontSize={18} color='#758C80'  /></span>
+                      <input type="text" placeholder="원하는 생물의 이름을 입력해주세요." className={styles.searchInput}/>
                     </div>
                   </div>
-                  <div className={styles.observationCount}>
-                    <p>Observations: <span style={{fontWeight:"600", color:"#1e3a8a"}}>2,277,659</span></p>
-                    <div className={styles.viewButtons}>
-                      <span className={styles.viewButton}><ImMenu color="#1e3a8a" fontSize={21} /></span>
-                      <span className={styles.viewButton}><CgMenuGridR color="#1e3a8a" fontSize={21} /></span>
-                      <span className={styles.viewButton}><IoLocationSharp color="#1e3a8a" fontSize={21} /></span>
-                    </div>
+                  <div className='min-w-[120px] h-[38px] flex items-center justify-center gap-2 px-[18px] bg-[#758C80] text-white rounded-md'>
+                      <CiEdit fontSize={24}/>
+                      <span className='flex items-center'>기록하기</span>
                   </div>
                 </div>
               </section>

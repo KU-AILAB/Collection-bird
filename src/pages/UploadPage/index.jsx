@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useTranslation } from "react-i18next";
+// import i18n from "./../../locales/i18n";
+
 
 const UploadPage = () => {
     const navigate = useNavigate();
+
+    const { t, i18n } = useTranslation();
+    const changelangeuageToKo = () => i18n.changeLanguage("ko");
+    const changelangeuageToEn = () => i18n.changeLanguage("en");
 
     // 생물 이름 div 모달창
     const [speciesSelectModelOpen, setSpeciesSelectModelOpen] = useState(false);
@@ -100,8 +107,8 @@ const UploadPage = () => {
                     <input type="file" className="hidden" style={{display: "none"}} onChange={handleChangeFile}/>
                     <div className="dropZoneContent">
                         <p className="text-[#E3EBE7] text-[70px]">+</p>
-                        <p className="text-[#758C80]">여기에 파일을 끌어놓거나</p>
-                        <p className="text-[#758C80]">+ 버튼을 클릭하세요</p>
+                        <p className="text-[#758C80]">{t("upload.drag and drop files here")}</p>
+                        <p className="text-[#758C80]">{t("upload.or click the + button")}</p>
                     </div>
                 </label>
 
@@ -120,12 +127,12 @@ const UploadPage = () => {
    
     return(
         <div className="w-full min-h-screen flex flex-col items-center bg-white">
-            <div className="w-[60%] p-4 flex flex-col gap-6">
+            <div className="w-[41%] p-4 flex flex-col gap-6">
 
                 <div className="w-full flex items-center space-x-4 mt-7">
-                    <div className="text-[#00240A] font-bold text-[20px]">생물 이름</div>
+                    <div className="text-[#00240A] font-bold text-[20px]">{t("upload.creature name")}</div>
                     <div
-                        className="flex-1 px-4 py-2 border border-[#758C80] cursor-pointer text-sm rounded-md"
+                        className="w-[300px] px-4 py-2 border border-[#758C80] cursor-pointer text-sm rounded-md"
                         onClick={() => {
                         if (selectedSpecies) {
                             setIsEditingSpecies(true); // 이미 선택한 후 수정하는 경우
@@ -135,14 +142,16 @@ const UploadPage = () => {
                             openFirstModal();
                         }
                     }}>
-                        {selectedSpecies ? selectedSpecies.name : "생물 분류 / 생물 이름 선택"}
+                        {selectedSpecies ? selectedSpecies.name : t("upload.select_species_name")}
                     </div>
                     <div
-                        className="flex-1 px-4 py-2 border border-[#758C80] cursor-pointer text-sm rounded-md"
+                        className="w-[300px] px-4 py-2 border border-[#758C80] cursor-pointer text-sm rounded-md"
                         onClick={() => setHabitatModalOpen(true)}
                     >
-                        {selectedHabitat ? selectedHabitat : "서식지 유형 선택"}
+                        {selectedHabitat ? selectedHabitat : t("upload.select_habitat_type")}
                     </div>
+                    <button onClick={changelangeuageToKo}>Korean</button>
+                    <button onClick={changelangeuageToEn}>English</button>
                 </div>
                 
                 {/* 구분선 */}
@@ -221,7 +230,7 @@ const UploadPage = () => {
                         className="bg-white rounded-lg p-6 shadow-lg w-[300px] text-center"
                         onClick={(e) => e.stopPropagation()}
                         >
-                            <h3 className="text-lg font-semibold mb-4">서식지 유형 선택</h3>
+                            <h3 className="text-lg font-semibold mb-4">{t("upload.select a habitat type")}</h3>
                             <div className="flex flex-wrap justify-center gap-3">
                                 <button onClick={() => { setSelectedHabitat("산림/계곡"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">산림/계곡</button>
                                 <button onClick={() => { setSelectedHabitat("평지숲"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">평지숲</button>
@@ -240,12 +249,12 @@ const UploadPage = () => {
         
 
                 <div className="data">
-                    <div className="text-[#00240A] font-bold text-left text-[20px]">사진 / 동영상 / 소리 등록</div>
+                    <div className="text-[#00240A] font-bold text-left text-[20px]">{t("upload.register photos, videos, and sounds")}</div>
 
                     <div className="flex gap-10 text-xs mb-4 mt-3">
-                        <div className="flex-1 bg-[#E3EBE7] text-[15px] text-center cursor-pointer rounded py-3 hover:bg-[#5a7464]">📷 사진</div>
-                        <div className="flex-1 bg-[#E3EBE7] text-[15px] text-center cursor-pointer rounded py-3 hover:bg-[#5a7464]">📷 동영상</div>
-                        <div className="flex-1 bg-[#E3EBE7] text-[15px] text-center cursor-pointer rounded py-3 hover:bg-[#5a7464]">🔊 소리</div>
+                        <div className="flex-1 bg-[#E3EBE7] text-[15px] text-center cursor-pointer rounded py-3 hover:bg-[#5a7464]">📷 {t("upload.photos")}</div>
+                        <div className="flex-1 bg-[#E3EBE7] text-[15px] text-center cursor-pointer rounded py-3 hover:bg-[#5a7464]">📷 {t("upload.videos")}</div>
+                        <div className="flex-1 bg-[#E3EBE7] text-[15px] text-center cursor-pointer rounded py-3 hover:bg-[#5a7464]">🔊 {t("upload.sounds")}</div>
                     </div>
                     <div className="flex gap-10 w-full mt-12">
                         <div className="flex-1">
@@ -253,7 +262,7 @@ const UploadPage = () => {
                         </div>
                         <div className="flex-1 flex flex-col gap-6 px-2">
                             <div className="flex flex-col gap-2 text-md text-[#00240A] font-bord">
-                                <div className="text-[#00240A] font-bold text-left text-[18px]">관찰 시간</div>
+                                <div className="text-[#00240A] font-bold text-left text-[18px]">{t("upload.observation time")}</div>
                                 <div className="flex gap-2">
                                     <DatePicker
                                         selected={selectedDate}
@@ -296,11 +305,11 @@ const UploadPage = () => {
                             }
 
                             <div className="flex flex-col text-[#00240A] font-bord gap-2 text-[15px] w-full">
-                                <div className="text-[#00240A] font-bold text-left text-[18px]">관찰 위치</div>
+                                <div className="text-[#00240A] font-bold text-left text-[18px]">{t("upload.observation location")}</div>
                                 <div className="flex gap-2">
                                     <input
                                     type="text"
-                                    placeholder="관찰 위치를 입력하세요"
+                                    placeholder={t("upload.please enter your observation location")}
                                     value={selectedLocation}
                                     readOnly
                                     onClick={() => setLocationModalOpen(true)}
@@ -310,12 +319,12 @@ const UploadPage = () => {
                                         className="px-4 py-2 border border-[#6C8372] text-[#6C8372] rounded text-sm"
                                         onClick={() => setLocationModalOpen(true)}
                                     >
-                                    내위치
+                                    {t("upload.my location")}
                                     </button>
                                 </div>
                                 <div className="text-left">
                                     <input type="checkbox" id="privateLocation" />
-                                    <label htmlFor="privateLocation" className="ml-2 text-sm">관찰 위치 비공개</label>
+                                    <label htmlFor="privateLocation" className="ml-2 text-sm">{t("upload.observation location private")}</label>
                                 </div>
                             </div>
                         </div>
@@ -327,12 +336,12 @@ const UploadPage = () => {
 
 
                 <div className="w-full">
-                    <div className="text-[#00240A] font-bold text-left text-[20px] mb-2">관찰 메모</div>
+                    <div className="text-[#00240A] font-bold text-left text-[20px] mb-2">{t("upload.observation notes")}</div>
                     <textarea className="w-full border border-gray-300 p-3 rounded h-24 bg-gray-50" />
                 </div>
                 <div className="flex justify-center gap-4 mt-6">
-                    <button className="px-6 py-2 bg-[#E3EBE7] text-[#758C80] rounded hover:bg-[#5a7464] hover:text-white" onClick={navigateToPost}>게시</button>
-                    <button className="px-6 py-2 bg-[#E3EBE7] text-[#758C80] rounded hover:bg-[#5a7464] hover:text-white" onClick={navigateToMain}>취소</button>
+                    <button className="px-6 py-2 bg-[#E3EBE7] text-[#758C80] rounded hover:bg-[#5a7464] hover:text-white" onClick={navigateToPost}>{t("upload.register")}</button>
+                    <button className="px-6 py-2 bg-[#E3EBE7] text-[#758C80] rounded hover:bg-[#5a7464] hover:text-white" onClick={navigateToMain}>{t("upload.cancel")}</button>
                     {/* <button className="px-6 py-2 bg-[#E3EBE7] text-white rounded">관찰 올리기 추가</button> */}
                 </div>
             </div>

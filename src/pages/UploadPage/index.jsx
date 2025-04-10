@@ -165,18 +165,18 @@ const UploadPage = () => {
                     onClick={closeFirstModal} // 👉 배경 클릭 시 닫기
                     >
                         <div
-                        className="bg-white rounded-lg p-6 shadow-lg w-[300px] text-center"
+                        className="bg-white rounded-lg p-6 shadow-lg w-[400px] text-center"
                         onClick={(e) => e.stopPropagation()} // 👉 모달 내부 클릭은 무시
                         >
-                            <h3 className="text-lg font-semibold mb-4">생물 분류 선택</h3>
+                            <h3 className="text-lg font-semibold mb-4">{t("upload.select_biological_classification")}</h3>
                             <div className="flex flex-wrap justify-center gap-3">
-                                <button onClick={() => openSecondModal("조류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">조류</button>
-                                <button onClick={() => openSecondModal("포유류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">포유류</button>
-                                <button onClick={() => openSecondModal("어류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">어류</button>
-                                <button onClick={() => openSecondModal("곤충")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">곤충</button>
-                                <button onClick={() => openSecondModal("파충류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">파충류</button>
-                                <button onClick={() => openSecondModal("양서류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">양서류</button>
-                                <button onClick={() => openSecondModal("거미류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">거미류</button>
+                                <button onClick={() => openSecondModal("조류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.avian")}</button>
+                                <button onClick={() => openSecondModal("포유류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.mammalia")}</button>
+                                <button onClick={() => openSecondModal("어류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.pisces")}</button>
+                                <button onClick={() => openSecondModal("곤충")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.insect")}</button>
+                                <button onClick={() => openSecondModal("파충류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.reptiles")}</button>
+                                <button onClick={() => openSecondModal("양서류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.amphibia")}</button>
+                                <button onClick={() => openSecondModal("거미류")} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.arachnid")}</button>
                             </div>
                         </div>
                     </div>
@@ -230,18 +230,18 @@ const UploadPage = () => {
                         className="bg-white rounded-lg p-6 shadow-lg w-[300px] text-center"
                         onClick={(e) => e.stopPropagation()}
                         >
-                            <h3 className="text-lg font-semibold mb-4">{t("upload.select a habitat type")}</h3>
+                            <h3 className="text-lg font-semibold mb-4">{t("upload.select_habitat_type")}</h3>
                             <div className="flex flex-wrap justify-center gap-3">
-                                <button onClick={() => { setSelectedHabitat("산림/계곡"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">산림/계곡</button>
-                                <button onClick={() => { setSelectedHabitat("평지숲"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">평지숲</button>
-                                <button onClick={() => { setSelectedHabitat("경작지/들판"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">경작지/들판</button>
-                                <button onClick={() => { setSelectedHabitat("동굴"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">동굴</button>
-                                <button onClick={() => { setSelectedHabitat("해양"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">해양</button>
-                                <button onClick={() => { setSelectedHabitat("하천/호수"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">하천/호수</button>
-                                <button onClick={() => { setSelectedHabitat("습지"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">습지</button>
-                                <button onClick={() => { setSelectedHabitat("거주지역"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">거주지역</button>
-                                <button onClick={() => { setSelectedHabitat("인공시설"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">인공시설</button>
-                                <button onClick={() => { setSelectedHabitat("기타"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">기타</button>
+                                <button onClick={() => { setSelectedHabitat("산림/계곡"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.forest/valley")}</button>
+                                <button onClick={() => { setSelectedHabitat("평지숲"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.flat forest")}</button>
+                                <button onClick={() => { setSelectedHabitat("경작지/들판"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.plow/field")}</button>
+                                <button onClick={() => { setSelectedHabitat("동굴"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.cave")}</button>
+                                <button onClick={() => { setSelectedHabitat("해양"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.marine")}</button>
+                                <button onClick={() => { setSelectedHabitat("하천/호수"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.river/lake")}</button>
+                                <button onClick={() => { setSelectedHabitat("습지"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.marsh")}</button>
+                                <button onClick={() => { setSelectedHabitat("거주지역"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.residential district")}</button>
+                                <button onClick={() => { setSelectedHabitat("인공시설"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.artificial facility")}</button>
+                                <button onClick={() => { setSelectedHabitat("기타"); setHabitatModalOpen(false); }} className="bg-[#6C8372] text-white font-medium py-2 px-4 rounded hover:bg-[#5a7464]">{t("upload.etc")}</button>
                             </div>
                         </div>
                     </div>

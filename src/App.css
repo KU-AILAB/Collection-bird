@@ -1,8 +1,8 @@
-@import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@import "tailwindcss";
 
 #root {
   width: 100vw;
@@ -11,6 +11,10 @@
   text-align: center;
   height: 100vh;
   overflow: hidden;
+  background: #fff;
+
+
+  font-family: IBM Plex Sans KR;
 }
 
 html {
@@ -51,4 +55,10 @@ html {
 
 .read-the-docs {
   color: #888;
+}
+
+.main {
+  height: calc(100vh - 90px);
+  overflow-y: auto;
+  border: 1px solid red;
 }

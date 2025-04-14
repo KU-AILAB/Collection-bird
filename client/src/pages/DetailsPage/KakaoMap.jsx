@@ -64,7 +64,7 @@ const KakaoMap = ({ address, lat, lon }) => {
         ref={containerRef}
         style={{
           width: "100%",
-          height: "210px",
+          height: "300px",
           borderRadius: "8px",
           overflow: "hidden",
         }}

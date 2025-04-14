@@ -1,1 +1,1 @@
-pip install fastapi uvicorn sqlalchemy PyMySQL
+pip install fastapi uvicorn sqlalchemy PyMySQL python-dotenv

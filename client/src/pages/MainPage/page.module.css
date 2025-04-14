@@ -1,4 +1,4 @@
-/* Main Container */
+Main Container
 .container {
     display: flex;
     flex-direction: column;
@@ -135,6 +135,7 @@
 
   /* Search Section */
   .searchSection {
+    margin-top: 20px;
     padding: 1rem 0;
     transition: all 1s ease-in-out;
   }
@@ -171,7 +172,7 @@
   }
   
   .searchInput {
-    width: 200px;
+    width: 100px;
     flex: 1;
     padding: 0.5rem 0.75rem;
     outline: none;

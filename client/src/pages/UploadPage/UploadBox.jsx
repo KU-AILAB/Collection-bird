@@ -1,4 +1,5 @@
 // UploadBox.jsx
+import { t } from "i18next";
 import React, { useState } from "react";
 
 const UploadBox = ({ onFileChange }) => {
@@ -62,8 +63,8 @@ const UploadBox = ({ onFileChange }) => {
         <input type="file" className="hidden" multiple onChange={handleChangeFile} />
         <div className="dropZoneContent">
           <p className="text-[#E3EBE7] text-[70px]">+</p>
-          <p className="text-[#758C80]">업로드.여기에 파일을 끌어다 놓으세요</p>
-          <p className="text-[#758C80]">업로드하거나 + 버튼을 클릭하세요</p>
+          <p className="text-[#758C80]">{t("upload.drag and drop files here")}</p>
+          <p className="text-[#758C80]">{t("upload.or click the + button")}</p>
         </div>
       </label>
 

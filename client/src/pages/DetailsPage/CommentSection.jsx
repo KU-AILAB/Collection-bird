@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 export default function CommentSection({ observationId }) {
   const [comments, setComments] = useState([]);
@@ -45,6 +46,8 @@ export default function CommentSection({ observationId }) {
 
   const commentCount = comments.length;
 
+  const { t } = useTranslation();
+
   return (
     <div style={{ marginTop: "30px", backgroundColor: "#f9f9f9" }}>
       {/* 상단 - 댓글달기 / 이름제안 */}
@@ -60,8 +63,8 @@ export default function CommentSection({ observationId }) {
         borderLeft: "1px solid #ddd",
         borderRight: "1px solid #ddd",
       }}>
-        <span>댓글달기 {commentCount}</span>
-        <span>이름제안 0</span>
+        <span>{t("detail.댓글 달기")} {commentCount}</span>
+        <span>{t("detail.이름 제안")} 0</span>
       </div>
 
       {/* 댓글 목록 */}
@@ -148,6 +151,7 @@ export default function CommentSection({ observationId }) {
               게시
             </button>
           </div>
+
         </div>
       </div>
     </div>

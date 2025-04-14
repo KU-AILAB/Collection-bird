@@ -1,6 +1,7 @@
 // src/pages/DetailsPage/ElevationWeatherInfo.jsx
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // 영문 날씨 상태 → 한글 매핑 (필요에 따라 확장)
 const weatherDescriptionMap = {
@@ -18,6 +19,9 @@ const weatherDescriptionMap = {
 };
 
 export default function ElevationWeatherInfo({ lat, lon, address }) {
+
+  const { t, i18n } = useTranslation();
+  
   // DB의 lat, lon이 비어있을 수 있으므로, 초깃값을 받거나 undefined로 설정
   const [coords, setCoords] = useState({ lat, lon });
   const [elevation, setElevation] = useState(null);
@@ -92,24 +96,35 @@ export default function ElevationWeatherInfo({ lat, lon, address }) {
     fetchData();
   }, [coords.lat, coords.lon, OPENWEATHER_API_KEY]);
 
-  if (loading) return <p>정보를 가져오는 중...</p>;
-  if (elevation === null && !weatherData) return <p>고도/날씨 정보를 가져올 수 없음</p>;
-
+  if (loading) return <p>{t("detail.정보를 가져오는 중")}</p>;
+  if (elevation === null && !weatherData) {
+    return <p className="ml-5">{t("detail.고도/날씨 정보를 가져올 수 없음")}</p>;
+  }
+  
   const weatherInKorean = weatherDescriptionMap[weatherData?.description] || weatherData?.description || "";
 
   return (
     <div style={{ fontSize: "16px", lineHeight: "1.6", textAlign: "left" }}>
       {elevation !== null && (
         <div style={{ marginBottom: "8px" }}>
-          <strong style={{ display: "block", marginBottom: "4px" }}>🏔️ 고도</strong>
-          <div>해발 {elevation}m</div>
+          <strong style={{ display: "block", fontWeight: 750, marginBottom: "4px", color: "#254D31" }}>🏔️ {t("detail.고도")}</strong>
+          <div className="ml-5 color-[#254D31]">
+            {i18n.language === "ko"
+              ? `해발 ${elevation}m`
+              : `${elevation}${t("detail.해발")}`}
+          </div>
         </div>
       )}
       {weatherData && (
         <div>
-          <strong style={{ display: "block", marginBottom: "4px" }}>☁️ 날씨</strong>
-          <div>
-            {weatherInKorean} | 기온 {weatherData.temp}℃ | 강수량 {weatherData.rain}mm | 풍속 {weatherData.windSpeed}m/s
+          <strong style={{ display: "block", fontWeight: 750, marginBottom: "4px", color: "#254D31" }}>
+            ☁️ {t("detail.날씨")}
+          </strong>
+          <div className="ml-5 color-[#254D31]">
+            {i18n.language === "ko" ? weatherInKorean : weatherData.description}{" "}
+            <strong>|</strong> {t("detail.기온")} {weatherData.temp}℃{" "}
+            <strong>|</strong> {t("detail.강수량")} {weatherData.rain}mm{" "}
+            <strong>|</strong> {t("detail.풍속")} {weatherData.windSpeed}m/s
           </div>
         </div>
       )}

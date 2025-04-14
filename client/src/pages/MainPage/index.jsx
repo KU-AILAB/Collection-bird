@@ -10,7 +10,7 @@ const MainPage = () => {
         <div className={styles.container}>
           <div className={styles.mainContainer}>
             <Main/>
-            <Footer/>
+            {/* <Footer/> */}
           </div>
 
           <a href="#top" className={styles.topButton}>

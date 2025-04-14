@@ -10,10 +10,11 @@ import UploadBox from "./UploadBox";
 
 const UploadPage = () => {
   const navigate = useNavigate();
-  const { t, i18n } = useTranslation();
+  // const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
-  const changelangeuageToKo = () => i18n.changeLanguage("ko");
-  const changelangeuageToEn = () => i18n.changeLanguage("en");
+  // const changelangeuageToKo = () => i18n.changeLanguage("ko");
+  // const changelangeuageToEn = () => i18n.changeLanguage("en");
 
   // 모달 상태 관리
   const [speciesSelectModelOpen, setSpeciesSelectModelOpen] = useState(false);
@@ -121,8 +122,8 @@ const UploadPage = () => {
   const navigateToMain = () => navigate("/");
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center bg-white">
-      <div className="w-[41%] p-4 flex flex-col gap-6">
+    <div className="w-full min-h-screen flex flex-col items-center bg-white mt-6">
+      <div className="w-full max-w-[1200px] px-4 mx-auto flex flex-col gap-6">
         {/* 상단 입력 영역 */}
         <div className="w-full flex items-center space-x-4 mt-7">
           <div className="text-[#00240A] font-bold text-[20px]">
@@ -148,8 +149,8 @@ const UploadPage = () => {
           >
             {selectedHabitat ? selectedHabitat : t("upload.select_habitat_type")}
           </div>
-          <button onClick={changelangeuageToKo}>Korean</button>
-          <button onClick={changelangeuageToEn}>English</button>
+          {/* <button onClick={changelangeuageToKo}>Korean</button>
+          <button onClick={changelangeuageToEn}>English</button> */}
         </div>
 
         <div className="border-t border-[#758C80] pt-6 mt-6"></div>
@@ -410,10 +411,13 @@ const UploadPage = () => {
                       </option>
                     ))}
                   </select>
-                  <select className="p-2 border border-gray-300 bg-gray-100 rounded" onChange={(e) => setMinute(Number(e.target.value))}>
-                    {Array.from({ length: 60 }, (_, i) => (
-                      <option key={i} value={i}>
-                        {i} 분
+                  <select
+                    className="p-2 border border-gray-300 bg-gray-100 rounded"
+                    onChange={(e) => setMinute(Number(e.target.value))}
+                  >
+                    {Array.from({ length: 12 }, (_, i) => (
+                      <option key={i} value={i * 10}>
+                        {i * 5} 분
                       </option>
                     ))}
                   </select>
@@ -444,6 +448,8 @@ const UploadPage = () => {
             </div>
           </div>
         </div>
+
+        <div className="border-t border-[#758C80] pt-6 mt-6"></div>
 
         <div className="w-full">
           <div className="text-[#00240A] font-bold text-left text-[20px] mb-2">

@@ -1,6 +1,22 @@
 {
     "header": {
-        "mypage": "My page"
+        "AI융합연구센터": "AI Convergence Research Center",
+        "야생동물 데이터 수집": "Wildlife Data Collection",
+        "mypage": "Mypage",
+        "관찰하기": "Observations",
+        "참여하기": "Participation",
+        "소통하기": "Communication",
+        "통계보기": "Statistics"
+    },
+    "main": {
+        "전체": "Total",
+        "식물": "Plant",
+        "동물": "Animal",
+        "곤충": "Insect",
+        "기타": "Etc",
+        "생물 이름 입력_검색": "Enter the creature name",
+        "업로드": "Upload",
+        "관찰 수": "Observations"
     },
     "upload": {
         "creature name": "Creature name",
@@ -40,5 +56,24 @@
         "save Temporarily": "Save Temporarily",
         "cancel": "Cancel",
         "please enter the details of your observation of the creature.": "Please enter the details of your observation of the creature"
+    },
+    "detail": {
+        "위치": "Location",
+        "고도": "Altitude",
+        "날씨": "Weather",
+        "관찰시각": "Observation Time",
+        "뒤로가기": "Go Back",
+        "위키피디아 정보": "View on Wikipedia",
+        "환경부 국립생물자원관 정보": "View on NIBR",
+        "댓글 달기": "Leave a Comment",
+        "이름 제안": "Suggest a Name",
+        "해발": "m above sea level",
+        "Date": "{{month}} {{day}}, {{year}} at {{time}}",
+        "기온": "Temperature",
+        "강수량": "Precipitation",
+        "풍속": "Wind Speed",
+        "정보를 가져오는 중": "loading..",
+        "위치정보 없음": "No location info",
+        "고도/날씨 정보를 가져올 수 없음": "Unable to retrieve elevation/weather information"
     }
 }

@@ -22,7 +22,7 @@ app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 @app.get("/")
 def read_root():
-    return {"message": "서버가 정상 작동중입니다."}
+    return {"ㅜㅡㅜ"}
 
 # DB에 테이블 생성 (모델 기반)
 Base.metadata.create_all(bind=engine)

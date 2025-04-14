@@ -21,14 +21,3 @@ server/
 ├── Makefile              # 실행 자동화 (옵션)  
 └── requirements.txt      # Python 패키지 목록  
 
-## 🚀 주요 기능 요약  
-  
-    models/: DB 테이블 정의 (Observation, Comment)  
-  
-    schemas/: API 요청/응답 스키마 정의  
-  
-    routers/: 실제 API 라우터 구현  
-  
-    uploads/: 클라이언트가 업로드한 멀티미디어 파일 저장  
-  
-    main.py: FastAPI 앱 구동, 라우터 등록, CORS 설정 등 포함  

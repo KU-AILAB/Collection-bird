@@ -11,6 +11,7 @@ import CommentSection from "./CommentSection";
 import ElevationWeatherInfo from "./ElevationWeatherInfo"; // 고도/날씨 정보 컴포넌트
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowDropleftCircle, IoIosArrowDroprightCircle } from "react-icons/io";
+import { useTranslation } from "react-i18next";
 
 // 커스텀 다음 화살표
 function NextArrow(props) {
@@ -53,14 +54,24 @@ function PrevArrow(props) {
 }
 
 // 날짜 포맷팅 함수 (오전/오후 포함)
-function formatAMPM(date) {
+function formatAMPM(date, lang = "ko") {
   let hours = date.getHours();
   let minutes = date.getMinutes();
-  const ampm = hours >= 12 ? "오후" : "오전";
+  const isPM = hours >= 12;
+
+  // 12시간제 변환
   hours = hours % 12;
   hours = hours || 12; // 0일 경우 12로 표시
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  return `${ampm} ${hours}시${minutes !== "00" ? " " + minutes + "분" : ""}`;
+
+  const paddedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+
+  if (lang === "en") {
+    const ampm = isPM ? "PM" : "AM";
+    return `${hours}:${paddedMinutes} ${ampm}`;
+  } else {
+    const ampm = isPM ? "오후" : "오전";
+    return `${ampm} ${hours}시${minutes !== 0 ? ` ${minutes}분` : ""}`;
+  }
 }
 
 export default function DetailPage() {
@@ -91,8 +102,10 @@ export default function DetailPage() {
   }, [id]);
 
   const handleUploadClick = () => {
-    navigate("/upload");
+    navigate("/");
   };
+
+  const { t, i18n } = useTranslation();
 
   if (!observation) {
     return <div style={{ marginTop: "91px", padding: "20px" }}>Loading...</div>;
@@ -115,13 +128,16 @@ export default function DetailPage() {
   // 날짜 포맷팅
   const obsDate = new Date(observation.observation_date);
   const formattedDate = isNaN(obsDate)
-    ? "날짜 정보 없음"
-    : `${obsDate.getFullYear()}년 ${obsDate.getMonth() + 1}월 ${obsDate.getDate()}일 ${formatAMPM(obsDate)}`;
-
+    ? t("detail.날짜 정보 없음")
+    : t("detail.Date", {
+        year: obsDate.getFullYear(),
+        month: obsDate.toLocaleString(i18n.language, { month: "long" }),
+        day: obsDate.getDate(),
+        time: formatAMPM(obsDate, i18n.language),
+      });
   return (
     <div
       style={{
-        marginTop: "91px",
         display: "flex",
         justifyContent: "center",
         padding: "0 16px",
@@ -139,7 +155,7 @@ export default function DetailPage() {
           padding: "24px",
         }}
       >
-        {/* 상단: 기록하기 버튼 */}
+        {/* 상단: 뒤로가기 버튼 */}
         <div style={{ marginBottom: "24px" }}>
           <div
             style={{
@@ -157,14 +173,14 @@ export default function DetailPage() {
             onClick={handleUploadClick}
           >
             <IoIosArrowBack style={{ fontSize: 24 }} />
-            <span>기록</span>
+            <span>{t("detail.뒤로가기")}</span>
           </div>
         </div>
 
         {/* 메인 영역 */}
-        <div style={{ display: "flex", gap: "32px", alignItems: "flex-start" }}>
+        <div style={{ display: "flex", gap: "35px", alignItems: "flex-start" }}>
           {/* 왼쪽: 미디어 슬라이더 */}
-          <div style={{ flex: 1, maxWidth: "500px", borderRadius: "8px", overflow: "hidden" }}>
+          <div style={{ flex: 2, maxWidth: "600px", borderRadius: "8px", overflow: "hidden" }}>
             {mediaList.length > 0 ? (
               <Slider {...sliderSettings} style={{ width: "100%", height: "100%" }}>
                 {mediaList.map((media, idx) => (
@@ -214,18 +230,25 @@ export default function DetailPage() {
                 />
               </div>
             )}
+            <div style={{ marginTop: "32px" }}>
+              <CommentSection observationId={observation.id} />
+            </div>
           </div>
+
 
           {/* 오른쪽: 관찰정보, 지도, 버튼 영역 */}
           <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "16px", textAlign: "left" }}>
+            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "16px", textAlign: "left", marginTop: "10px" }}>
+              <h1 style={{ fontSize: "28px", marginBottom: "8px", fontWeight: "bold", color: "#00240A" }}>
+                {observation.species_name || "이름 없음"}
+              </h1>
+            </div>
             {/* 관찰정보 섹션 */}
             <div style={{ marginBottom: "16px" }}>
-              <h2 style={{ fontSize: "20px", marginBottom: "8px" }}>관찰정보</h2>
-              <hr style={{ marginBottom: "16px", border: "none", borderTop: "1px solid #ccc" }} />
-              {/* 위치 */}
+              <hr style={{ marginBottom: "16px", border: "none", borderTop: "1px solid #758C80" }} />
               <div style={{ marginBottom: "12px" }}>
-                <strong style={{ display: "block", marginBottom: "4px" }}>📍 위치</strong>
-                {observation.location || "위치정보 없음"}
+                <strong style={{ display: "block", fontWeight: 750, marginBottom: "4px", color: "#254D31" }}>📍 {t("detail.위치")}</strong>
+                <div className="ml-5">{observation.location || t("detail.위치정보 없음")}</div>
               </div>
               {/* 고도 & 날씨 */}
               <div style={{ marginBottom: "12px" }}>
@@ -237,8 +260,9 @@ export default function DetailPage() {
               </div>
               {/* 관찰시각 */}
               <div style={{ marginBottom: "12px" }}>
-                <strong style={{ display: "block", marginBottom: "4px" }}>⏰ 관찰시각</strong>
-                {formattedDate}
+                <strong style={{ display: "block", fontWeight: 750, marginBottom: "4px", color: "#254D31" }}>⏰ {t("detail.관찰시각")}</strong>
+                <div className="ml-5 color-[#254D31]">{formattedDate}</div>
+                {/* {formattedDate} */}
               </div>
             </div>
 
@@ -246,7 +270,7 @@ export default function DetailPage() {
             <div
               style={{
                 width: "100%",
-                height: "300px",
+                height: "100%",
                 borderRadius: "8px",
                 overflow: "hidden",
                 marginBottom: "16px",
@@ -268,15 +292,14 @@ export default function DetailPage() {
                 style={{
                   flex: 1,
                   textAlign: "center",
-                  backgroundColor: "#E3EBE7",
+                  border: "1px solid #758C80",
                   padding: "8px 16px",
                   borderRadius: "4px",
-                  color: "#000",
+                  color: "#758C80",
                   textDecoration: "none",
-                  fontWeight: "bold",
                 }}
               >
-                위키피디아 정보
+                {t("detail.위키피디아 정보")}
               </a>
               <a
                // href={`https://species.nibr.go.kr/home/mainHome.do?cont_link=009&subMenu=009002&contCd=009002&pageMode=view&ktsn=${
@@ -287,26 +310,19 @@ export default function DetailPage() {
                 style={{
                   flex: 1,
                   textAlign: "center",
-                  backgroundColor: "#E3EBE7",
+                  border: "1px solid #758C80",
                   padding: "8px 16px",
                   borderRadius: "4px",
-                  color: "#000",
+                  color: "#758C80",
                   textDecoration: "none",
-                  fontWeight: "bold",
                 }}
               >
-                환경부 국립생물자원관 정보
+                {t("detail.환경부 국립생물자원관 정보")}
               </a>
             </div>
           </div>
         </div>
-
-        {/* 하단: 댓글 섹션 */}
-        <div style={{ marginTop: "32px" }}>
-          <CommentSection observationId={observation.id} />
-        </div>
-
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

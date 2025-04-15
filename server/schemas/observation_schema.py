@@ -1,3 +1,4 @@
+# schemas/observation_schema.py
 from pydantic import BaseModel
 from datetime import datetime
 
@@ -9,11 +10,8 @@ class ObservationBase(BaseModel):
     location: str | None = None
     memo: str | None = None
     image_url: str | None = None
-
-    # >>> 여기 추가 <<<
-    video_url: str | None = None
-    audio_url: str | None = None
-    # ------------------
+    video_url: str | None = None   # 추가됨
+    audio_url: str | None = None    # 추가됨
 
 class ObservationCreate(ObservationBase):
     pass

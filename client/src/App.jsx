@@ -1,17 +1,17 @@
 // src/App.jsx
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import MainPage from "./pages/MainPage/Main";
+import './App.css';
+import MainPage from './pages/MainPage';
 import Header from "./layout/Header/Header";
-import UploadPage from "./pages/Upload/UploadPage";
-import DetailPostPage from "./pages/DetailPost/DetailPostPage";
+import UploadPage from "./pages/UploadPage";
+// DetailPage(= DetailPostPage) - 이름 혼동 없이 하나만 사용
+import DetailPage from "./pages/DetailsPage";
 
 function Layout({ children }) {
   return (
     <div className="layout">
-      <Header />
-      <main style={{ paddingTop: "11vh" }}>{children}</main>
+      <main>{children}</main>
     </div>
   );
 }
@@ -19,14 +19,15 @@ function Layout({ children }) {
 const App = () => {
   return (
     <Layout>
+      <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
+        <Route path="/details/:id" element={<DetailPage />} />
         <Route path="/upload" element={<UploadPage />} />
-        {/* 상세 페이지: URL 파라미터 id를 통해 생성된 관찰 데이터를 조회 */}
-        <Route path="/detail/:id" element={<DetailPostPage />} />
       </Routes>
     </Layout>
   );
 };
+
 
 export default App;

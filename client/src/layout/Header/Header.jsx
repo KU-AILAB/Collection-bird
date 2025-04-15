@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import { Link, useNavigate } from "react-router-dom";
 import "./../../style/Header.css"
 
@@ -25,3 +26,16 @@ const Header = () => {
 };
 
 export default Header;
+=======
+import HeaderItem from "./Sections/HeaderItem";
+
+const Header = () => {
+  return (
+    <header>
+      <HeaderItem />
+    </header>
+  );
+};
+
+export default Header;
+>>>>>>> V1

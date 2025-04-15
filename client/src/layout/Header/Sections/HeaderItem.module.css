@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-.DropdownToggle {
-    cursor: pointer; /* 커서 포인터 모양으로 변경 */
+/* .DropdownToggle {
+    cursor: pointer;
     background: none;
     border: none;
     outline: none;
@@ -23,7 +22,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0.5rem 1rem; /* 위아래 0.5, 좌우 1rem으로 설정 */
+    padding: 0.5rem 1rem;
     color: #343a40;
     text-align: left;
     &:hover {
@@ -34,9 +33,11 @@
   }
   
   .DropdownItemIcon {
-    margin-right: 0.5rem; /* 아이콘과 항목 텍스트 사이 간격 */
-  }
-=======
+    margin-right: 0.5rem;
+  } */
+
+
+
 .headerNav {
   position: absolute;
   left: 50%;
@@ -100,4 +101,3 @@
   line-height: 1.1;
   font-size: 12px;
 }
->>>>>>> V1

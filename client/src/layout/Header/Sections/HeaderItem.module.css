@@ -1,42 +1,18 @@
-/* .DropdownToggle {
-    cursor: pointer;
-    background: none;
-    border: none;
-    outline: none;
-  }
-  
-  .DropdownMenu {
-    position: absolute;
-    background-color: #f8f9fa;
-    border: 1.5px solid #d8d8d8;
-    border-radius: 5px;
-    width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    right: 0;
-    left: auto;
-  }
-  
-  .DropdownItem {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    padding: 0.5rem 1rem;
-    color: #343a40;
-    text-align: left;
-    &:hover {
-      width: 100%;
-      background-color: #e9ecef;
-      color: #212529;
-    };
-  }
-  
-  .DropdownItemIcon {
-    margin-right: 0.5rem;
-  } */
+.logoTitle {
+  /* 최소 12px, 뷰포트 너비의 1.8vw, 최대 18px */
+  font-size: clamp(12px, 1.8vw, 22px);
+  font-weight: bold;
+  color: white;
+  line-height: 1.1;
+}
 
-
+/* logo 영역 서브타이틀 (AI융합연구센터) */
+.logoSubtitle {
+  /* 최소 10px, 뷰포트 너비의 1.2vw, 최대 14px */
+  font-size: clamp(12px, 1.2vw, 16px);
+  color: #aaa;
+  margin-top: 5px;
+}
 
 .headerNav {
   position: absolute;
@@ -60,6 +36,13 @@
   font-size: 20px;
 }
 
+/* 화면 너비 1024px 이하 */
+@media (max-width: 1024px) {
+  .navItem {
+    font-size: 12px;
+  }
+}
+
 .navItem:hover {
   color: white;
   font-weight: 700;
@@ -67,16 +50,17 @@
 }
 
 .rightArea {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 20px;
   margin-left: auto;
-  padding-right: 24px;
+  padding-right: 20px;
 }
 
 .profileImg {
-  width: 50px;
-  height: 50px;
+  width: 37px;
+  height: 37px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
@@ -85,7 +69,7 @@
 .logoArea {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
   color: white;
   padding-left: 24px;
 }
@@ -100,4 +84,46 @@
   flex-direction: column;
   line-height: 1.1;
   font-size: 12px;
+}
+
+.headerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;       /* 기존 헤더 높이와 동일하게 */
+  z-index: 1000;       /* 다른 요소보다 위에 보이도록 */
+  background-color: #0e1b0f; /* inline 스타일 제거 시 필요 */
+}
+
+/* 드롭다운 메뉴 스타일 */
+.dropdownMenu {
+  position: absolute;
+  top: 100%; /* 부모 요소(rightArea) 바로 아래에 위치 */
+  right: 0; /* rightArea의 오른쪽에 정렬 */
+  background-color: white; /* 헤더와 동일한 배경색 */
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* 그림자 효과 */
+  min-width: 180px; /* 메뉴의 최소 너비 */
+  z-index: 1001; /* 다른 요소들보다 위에 보이도록 */
+  display: flex;
+  flex-direction: column; /* 메뉴 항목들을 세로로 정렬 */
+  padding: 10px 0; /* 상하 패딩 */
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.dropdownItem {
+  padding: 12px 20px;
+  color: #aaa;
+  text-decoration: none;
+  display: block; /* 블록 요소로 만들어 클릭 영역 확보 */
+  transition: background-color 0.2s, color 0.2s;
+  font-weight: 500;
+  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 */
+}
+
+.dropdownItem:hover {
+  background-color: #2a3b2b; /* 호버 시 배경색 변경 */
+  color: white;
 }

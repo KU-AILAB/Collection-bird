@@ -10,7 +10,7 @@ export default function CommentSection({ observationId }) {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const res = await axios.get(`http://localhost:4000/comments/${observationId}`);
+        const res = await axios.get(`http://222.116.135.70:6500/comments/${observationId}`);
         setComments(res.data);
       } catch (err) {
         console.error(err);
@@ -28,7 +28,7 @@ export default function CommentSection({ observationId }) {
       return;
     }
     try {
-      await axios.post("http://localhost:4000/comments", {
+      await axios.post("http://222.116.135.70:6500/comments", {
         observation_id: observationId,
         username,
         content
@@ -36,7 +36,7 @@ export default function CommentSection({ observationId }) {
       setUsername("");
       setContent("");
       // 다시 목록 불러오기
-      const res = await axios.get(`http://localhost:4000/comments/${observationId}`);
+      const res = await axios.get(`http://222.116.135.70:6500/comments/${observationId}`);
       setComments(res.data);
     } catch (err) {
       console.error(err);

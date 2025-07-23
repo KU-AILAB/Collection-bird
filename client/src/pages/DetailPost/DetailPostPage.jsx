@@ -14,7 +14,7 @@ function DetailPostPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(`http://localhost:4000/observations/${id}`);
+        const res = await fetch(`http://222.116.135.70:6500/observations/${id}`);
         if (!res.ok) throw new Error("데이터 조회 실패");
         const data = await res.json();
         setObservation(data);
@@ -84,14 +84,14 @@ function DetailPostPage() {
                 <div className="carousel_slide" onClick={openLightbox}>
                   {currentMedia.type === "image" && (
                     <img
-                      src={`http://localhost:4000${currentMedia.url}`}
+                      src={`http://222.116.135.70:6500${currentMedia.url}`}
                       alt="관찰 이미지"
                     />
                   )}
                   {currentMedia.type === "video" && (
                     <video controls style={{ maxWidth: "100%" }}>
                       <source
-                        src={`http://localhost:4000${currentMedia.url}`}
+                        src={`http://222.116.135.70:6500${currentMedia.url}`}
                         type="video/mp4"
                       />
                       동영상을 지원하지 않는 브라우저입니다.
@@ -197,7 +197,7 @@ function DetailPostPage() {
               <div className="lightbox_media">
                 {currentMedia.type === "image" && (
                   <img
-                    src={`http://localhost:4000${currentMedia.url}`}
+                    src={`http://222.116.135.70:6500${currentMedia.url}`}
                     alt="확대 이미지"
                     style={{ transform: `scale(${zoomScale})` }}
                   />
@@ -205,7 +205,7 @@ function DetailPostPage() {
                 {currentMedia.type === "video" && (
                   <video controls style={{ transform: `scale(${zoomScale})`, maxWidth: "100%" }}>
                     <source
-                      src={`http://localhost:4000${currentMedia.url}`}
+                      src={`http://222.116.135.70:6500${currentMedia.url}`}
                       type="video/mp4"
                     />
                     동영상을 지원하지 않는 브라우저입니다.

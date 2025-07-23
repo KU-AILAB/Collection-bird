@@ -17,7 +17,7 @@ const MainPage = () => {
   useEffect(() => {
     const fetchObservations = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/observations");
+        const response = await axios.get("http://222.116.135.70:6500/observations");
         // 응답 데이터가 배열형식이고, created_at을 기준으로 내림차순 정렬
         const sortedData = response.data.sort(
           (a, b) => new Date(b.created_at) - new Date(a.created_at)

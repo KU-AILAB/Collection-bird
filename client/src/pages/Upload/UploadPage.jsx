@@ -140,7 +140,7 @@ const UploadPage = () => {
     });
 
     try {
-      const response = await fetch("http://localhost:4000/observations", {
+      const response = await fetch("http://222.116.135.70:6500/observations", {
         method: "POST",
         body: formData,
       });

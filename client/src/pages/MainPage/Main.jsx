@@ -14,7 +14,7 @@ const MainPage = () => {
   useEffect(() => {
     const fetchObservations = async () => {
       try {
-        const res = await fetch("http://localhost:4000/observations");
+        const res = await fetch("http://222.116.135.70:6500/observations");
         if (!res.ok) throw new Error("관찰 데이터 조회 실패");
         const data = await res.json();
         // 최신 글 순으로 정렬 (id 내림차순)

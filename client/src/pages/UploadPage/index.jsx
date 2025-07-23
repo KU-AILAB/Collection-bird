@@ -108,7 +108,7 @@ const UploadPage = () => {
 
     try {
       // POST 요청 (URL 끝에 슬래시 포함)
-      await axios.post("http://localhost:4000/observations/", formData, {
+      await axios.post("http://222.116.135.70:6500/observations/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("등록이 완료되었습니다!");

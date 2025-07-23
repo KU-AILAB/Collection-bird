@@ -92,7 +92,7 @@ export default function DetailPage() {
   useEffect(() => {
     const fetchObservation = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/observations/${id}`);
+        const response = await axios.get(`http://222.116.135.70:6500/observations/${id}`);
         setObservation(response.data);
       } catch (error) {
         console.error("관찰 데이터 가져오기 오류:", error);

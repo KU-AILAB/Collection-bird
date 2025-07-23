@@ -1,12 +1,22 @@
 /* 전체 배경 및 업로드 컨테이너 */
 /* 배경색과 그림자, 여백 조정을 통해 모던한 카드 디자인 적용 */
-.background {
+/* .background {
   min-height: 100vh;
-  background-color: #f9f9f9; /* 밝은 배경색 */
+  background-color: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   padding: 40px 0;
+} */
+.background {
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;   /* Centers vertically, but allows overflow for scrolling */
+  padding: 40px 0;
+  /* Add flex-direction: column; if you want the items to stack vertically within the flex container */
+  flex-direction: column;
 }
 
 .uploadInfo {

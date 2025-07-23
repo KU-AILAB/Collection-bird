@@ -9,12 +9,18 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   background: #fff;
 
 
   font-family: IBM Plex Sans KR;
+}
+
+.content {
+  /* 헤더 높이(130px)만큼 아래에서부터 시작 */
+  margin-top: 130px;
+  height: calc(100vh - 130px);
+  overflow-y: auto;
 }
 
 html {

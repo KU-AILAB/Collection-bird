@@ -1,24 +1,17 @@
-/* 전체 배경 및 업로드 컨테이너 */
-/* 배경색과 그림자, 여백 조정을 통해 모던한 카드 디자인 적용 */
-/* .background {
-  min-height: 100vh;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px 0;
-} */
 .background {
-  min-height: 100vh;
-  background-color: #f9f9f9;
-  display: flex;
-  justify-content: center; /* Centers horizontally */
-  align-items: center;   /* Centers vertically, but allows overflow for scrolling */
-  padding: 40px 0;
-  /* Add flex-direction: column; if you want the items to stack vertically within the flex container */
-  flex-direction: column;
-}
+  width: 100%;
+  /* ↓ 여기 height 제거 */
+  /* height: 100vh; */
 
+  /* flex 설정은 유지하되, 세로로 길어질 때 유연하게 늘어나도록 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;  /* 위에서부터 쌓이도록 */
+  
+  padding: 40px 0;
+  overflow-y: auto;              /* 내부 스크롤 허용 */
+}
 .uploadInfo {
   width: 720px;
   background-color: #fff;

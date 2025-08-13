@@ -1,4 +1,4 @@
-# 🐦 야생동물 데이터 수집 서비스 (Wildlife Observation Platform)
+# 🐦 야생동물 데이터 수집 서비스 (Wildlife Observation)
 
 [![Backend-FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?logo=fastapi&logoColor=white)](#)
 [![DB-MySQL](https://img.shields.io/badge/DB-MySQL-4479A1?logo=mysql&logoColor=white)](#)

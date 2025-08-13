@@ -42,7 +42,6 @@
   <img src="./server/assets/detail.png" alt="상세 페이지" width="45%">
 </p>
 
-> 저장소 루트에 `assets/` 폴더를 두면 README가 이미지를 자동으로 표시합니다.
 
 ---
 

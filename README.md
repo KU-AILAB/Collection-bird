@@ -12,14 +12,36 @@
 ---
 
 ## 목차
-- [핵심 기능](#핵심-기능)
-- [화면](#화면)
-- [아키텍처](#아키텍처)
 - [기술 스택](#기술-스택)
-- [내 역할 & 성과](#내-역할--성과)
+- [화면](#화면)
+- [핵심 기능](#핵심-기능)
+- [아키텍처](#아키텍처)
 - [데이터 모델(ERD)](#데이터-모델erd)
 - [로컬 실행](#로컬-실행)
 - [폴더 구조](#폴더-구조)
+- [내 역할 & 성과](#내-역할--성과)
+
+---
+
+
+## 기술 스택
+
+- **Backend**: FastAPI, Uvicorn, Pydantic, SQLAlchemy
+- **DB**: MySQL(utf8mb4), PyMySQL, 마이그레이션 스크립트(수동/자동 혼합)
+- **외부 서비스**: Kakao Map JS SDK(지도/역지오코딩), OpenWeatherMap(날씨)
+- **Infra/기타**: python-dotenv(환경변수), CORS 설정, 파일 업로드 보안(확장자/크기 제한)
+
+---
+
+
+## 화면
+
+<p align="center">
+  <img src="./server/assets/main.png" alt="메인(관찰 카드 리스트)" width="45%">
+  <img src="./server/assets/upload.png" alt="업로드 폼" width="45%"><br/>
+  <img src="./server/assets/location.png" alt="관찰 위치 입력(카카오 지도)" width="45%">
+  <img src="./server/assets/detail.png" alt="상세 페이지" width="45%">
+</p>
 
 ---
 
@@ -30,17 +52,6 @@
 - **지도 연동**: 카카오 지도에서 마커를 클릭하면 **주소가 자동 계산** 되어 입력란에 반영.
 - **상세 페이지**: 미디어, 주소, **고도/날씨(기온·강수·풍속)**, 관찰 시각, 지도, **댓글(이름+내용)** 표시.
 - **다국어 토글**: 한국어/영어 UI(프론트 제공) · CORS/보안 설정으로 서비스화 준비.
-
----
-
-## 화면
-
-<p align="center">
-  <img src="./server/assets/main.png" alt="메인(관찰 카드 리스트)" width="45%">
-  <img src="./server/assets/upload.png" alt="업로드 폼" width="45%"><br/>
-  <img src="./server/assets/location.png" alt="관찰 위치 입력(카카오 지도)" width="45%">
-  <img src="./server/assets/detail.png" alt="상세 페이지" width="45%">
-</p>
 
 
 ---
@@ -60,25 +71,6 @@ flowchart LR
 
 ---
 
-## 기술 스택
-
-- **Backend**: FastAPI, Uvicorn, Pydantic, SQLAlchemy
-- **DB**: MySQL(utf8mb4), PyMySQL, 마이그레이션 스크립트(수동/자동 혼합)
-- **외부 서비스**: Kakao Map JS SDK(지도/역지오코딩), OpenWeatherMap(날씨)
-- **Infra/기타**: python-dotenv(환경변수), CORS 설정, 파일 업로드 보안(확장자/크기 제한)
-
----
-
-## 내 역할 & 성과
-
-- DB 설계·구축: 관찰(Observation)–미디어(Media)–댓글(Comment) 스키마/관계 정의, 인덱스 최적화.
-- 파일 업로드 파이프라인: 사진/영상/오디오 멀티파트 업로드 → 저장 경로/메타 저장 → 응답 스키마 설계.
-- 오픈 API 통합: 관찰 좌표·시각 기반 OpenWeatherMap 날씨/고도 계산, 카카오 지도 역지오코딩.
-- 프론트 연동: React UI에 데이터 바인딩, 리스트/상세/업로드 E2E 플로우 검증.
-- 코드 모듈화: `observation.py`, `observation_router.py`, `observation_schema.py`, `comment.py`, `comment_schema.py`, `db.py` 등으로 도메인·라우팅·스키마 분리.
-- 운영 고려: CORS 화이트리스트, `.env` 분리, 로그 개인정보 최소화, 업로드 파일 검증.
-
----
 
 ## 데이터 모델(ERD)
 
@@ -192,3 +184,17 @@ npm run dev
 ```
 
 ---
+
+
+---
+
+## 내 역할 & 성과
+
+- DB 설계·구축: 관찰(Observation)–미디어(Media)–댓글(Comment) 스키마/관계 정의, 인덱스 최적화.
+- 파일 업로드 파이프라인: 사진/영상/오디오 멀티파트 업로드 → 저장 경로/메타 저장 → 응답 스키마 설계.
+- 오픈 API 통합: 관찰 좌표·시각 기반 OpenWeatherMap 날씨/고도 계산, 카카오 지도 역지오코딩.
+- 프론트 연동: React UI에 데이터 바인딩, 리스트/상세/업로드 E2E 플로우 검증.
+- 코드 모듈화: `observation.py`, `observation_router.py`, `observation_schema.py`, `comment.py`, `comment_schema.py`, `db.py` 등으로 도메인·라우팅·스키마 분리.
+- 운영 고려: CORS 화이트리스트, `.env` 분리, 로그 개인정보 최소화, 업로드 파일 검증.
+
+

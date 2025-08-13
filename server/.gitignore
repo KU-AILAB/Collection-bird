@@ -22,11 +22,15 @@ build/
 /server/build/
 /server/.env
 /server/.env.*
+/server/uploads
 
 # 예: Python 서버인 경우 - pycache, venv 등
 /server/__pycache__/
 /server/*.pyc
 /server/venv/
+venv
+.venv
+
 
 __pycache__/
 *.pyc

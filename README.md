@@ -25,11 +25,17 @@
 
 
 ## 기술 스택
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+ 
 
-- **Backend**: FastAPI, Uvicorn, Pydantic, SQLAlchemy
-- **DB**: MySQL(utf8mb4), PyMySQL, 마이그레이션 스크립트(수동/자동 혼합)
-- **외부 서비스**: Kakao Map JS SDK(지도/역지오코딩), OpenWeatherMap(날씨)
-- **Infra/기타**: python-dotenv(환경변수), CORS 설정, 파일 업로드 보안(확장자/크기 제한)
+![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Kakao Map JS SDK](https://img.shields.io/badge/Kakao%20Map%20JS%20SDK-FFCD00?style=for-the-badge&logo=kakaotalk&logoColor=000000)
+![OpenWeatherMap](https://img.shields.io/badge/OpenWeatherMap-FF7E00?style=for-the-badge)
+ 
+![python-dotenv](https://img.shields.io/badge/python--dotenv-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
 ---
 

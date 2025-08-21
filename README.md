@@ -3,6 +3,7 @@
 [![Backend-FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?logo=fastapi&logoColor=white)](#)
 [![DB-MySQL](https://img.shields.io/badge/DB-MySQL-4479A1?logo=mysql&logoColor=white)](#)
 [![기간](https://img.shields.io/badge/기간-2025.03–2025.04-6E7781)](#)
+[![License](https://img.shields.io/badge/License-MIT-4caf50.svg)](#-license)
 
 **관찰자가 야생동물(사진·영상·소리)을 기록**하면  
 백엔드가 **좌표·주소(카카오 지도)와 관찰 시각**을 이용해 **날씨(OpenWeatherMap)·고도 정보를 결합**하여 저장/조회하는 서비스입니다.
